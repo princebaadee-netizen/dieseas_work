@@ -1,0 +1,8 @@
+export { AdminLogin } from './Login'
+export { AdminDashboard } from './Dashboard'
+export { AdminDiseaseList } from './DiseaseList'
+export { AdminDiseaseForm } from './DiseaseForm'
+export { AdminRemedyList } from './RemedyList'
+export { AdminRemedyForm } from './RemedyForm'
+export { AdminCategories } from './Categories'
+export { AdminErrorPage } from './AdminErrorPage'

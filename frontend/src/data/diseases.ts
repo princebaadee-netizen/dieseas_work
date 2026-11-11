@@ -1,0 +1,337 @@
+import type { Disease } from '@/types'
+
+/**
+ * Sample diseases (Project Plan sections 3.1 and 3.4).
+ *
+ * Written in plain language for an ordinary reader, with no dosages and no
+ * prescription instructions. Every remedy cites a source and a review date.
+ *
+ * The deliberate edge cases from section 3.5:
+ * - `malaria` has a very long symptoms list.
+ * - `asthma` has a short symptoms list.
+ * - `typhoid-fever` has no remedy yet, to test the empty state.
+ * - `malaria`, `typhoid-fever` and `type-2-diabetes` share the symptom fever,
+ *   so searching "fever" returns several results.
+ */
+export const DISEASES: Disease[] = [
+  {
+    id: 1,
+    category: { name: 'Infectious diseases', slug: 'infectious-diseases' },
+    name: 'Malaria',
+    slug: 'malaria',
+    shortSummary:
+      'Malaria is a serious but preventable and treatable illness spread by mosquito bites. Early testing and treatment make a big difference.',
+    description:
+      'Malaria is a life-threatening disease caused by Plasmodium parasites, passed to people through the bites of infected female Anopheles mosquitoes. It is preventable and treatable, and early diagnosis and treatment reduce illness, prevent deaths and help reduce spread.',
+    symptoms: [
+      'Fever, headache and chills, which can be mild and easy to mistake for other illnesses',
+      'Vomiting',
+      'Symptoms usually start 10 to 15 days after the bite',
+      'Milder symptoms in people who have had malaria before',
+      'Extreme tiredness',
+      'Impaired consciousness',
+      'Repeated convulsions',
+      'Difficulty breathing',
+      'Dark or bloody urine',
+      'Jaundice',
+      'Abnormal bleeding',
+    ],
+    causes: [
+      'Infection with Plasmodium parasites carried by the bite of an infected female Anopheles mosquito',
+      'Blood transfusions that have not been screened',
+      'Sharing needles that have been contaminated',
+    ],
+    riskFactors: [
+      'Children under 5 years old',
+      'Pregnant people',
+      'People living with HIV/AIDS or another weakened immune system',
+      'Travellers who have never had malaria before',
+      'Living in or travelling to areas where malaria is common',
+      'Sleeping without mosquito protection',
+    ],
+    prevention: [
+      'Insecticide-treated bed nets, insect repellent and protective clothing',
+      'Indoor residual spraying in areas where malaria is common',
+      'The RTS,S vaccine for children in moderate to high transmission areas',
+      'Preventive medicines for certain groups, such as pregnant women, young children and travellers, under health-worker guidance',
+      'Clearing standing water around the home where mosquitoes can breed',
+    ],
+    remedy: {
+      id: 1,
+      overview:
+        'Malaria always needs treatment with medicine. For the most common dangerous type, the best available treatment is artemisinin-based combination therapy (ACT). The right medicine depends on the type of malaria and the person affected, and must be chosen by a health professional.',
+      careOptions: [
+        'Get tested as early as possible so the right treatment can be started',
+        'Take the medicine a health professional prescribes, following their instructions',
+        'Finish the full course of treatment even after you feel better',
+        'Rest at home and drink plenty of fluids while you recover',
+      ],
+      precautions: [
+        'Do not use leftover medicine or medicine that has not been prescribed for you',
+        'Do not assume every fever is malaria; a blood test confirms the diagnosis',
+        'Keep using mosquito protection during recovery so you are not bitten again',
+      ],
+      urgentSigns: [
+        'Extreme tiredness, confusion, repeated convulsions, difficulty breathing, dark or bloody urine, jaundice or abnormal bleeding need emergency care right away',
+        'Seek prompt testing for fever in a child, a pregnant person or someone with a weak immune system',
+        'Seek care if fever starts after visiting an area where malaria is common',
+        'Seek care if symptoms do not improve after starting treatment',
+      ],
+      source:
+        'World Health Organization malaria fact sheet and health topic pages; checked against NCDC guidance',
+      lastReviewed: '2026-09-30',
+    },
+    featured: true,
+    createdAt: '2026-01-12',
+    updatedAt: '2026-09-30',
+  },
+
+  {
+    id: 2,
+    category: { name: 'Infectious diseases', slug: 'infectious-diseases' },
+    name: 'Typhoid fever',
+    slug: 'typhoid-fever',
+    shortSummary:
+      'Typhoid fever is a bacterial illness spread through contaminated food or water. Safe water, carefully prepared food and regular handwashing prevent most cases.',
+    description:
+      'Typhoid fever is an illness caused by Salmonella Typhi bacteria. People pick it up by eating food or drinking water that has been contaminated with the bacteria, or through close contact with someone who has it. The illness usually starts slowly, with a fever that rises over several days. Most people recover fully with the right care, but complications can become serious when the illness is not treated, so medical care is important.',
+    symptoms: [
+      'Fever that rises gradually over several days',
+      'Headache and tiredness',
+      'Stomach pain',
+      'Constipation or diarrhoea',
+      'Loss of appetite and weight loss',
+      'A raised, spotty rash on the chest and abdomen in some people',
+    ],
+    causes: [
+      'Infection with Salmonella Typhi bacteria',
+      'Eating food or drinking water contaminated with infected faeces',
+      'Close contact with a person who has typhoid fever',
+    ],
+    riskFactors: [
+      'Living in or travelling to an area where sanitation is limited',
+      'Drinking water from an unsafe source',
+      'Eating food prepared or stored in unhygienic conditions',
+      'Children under five years old',
+    ],
+    prevention: [
+      'Drink safe water from a piped, treated or properly boiled source',
+      'Wash hands thoroughly with soap before eating and after using the toilet',
+      'Eat food that is cooked thoroughly and served hot',
+      'Avoid raw shellfish and food sold where hygiene is not clear',
+      'Get the typhoid vaccine before travelling to high-risk areas',
+    ],
+    // Deliberate edge case: this disease has no remedy yet.
+    remedy: null,
+    featured: true,
+    createdAt: '2026-02-03',
+    updatedAt: '2026-03-18',
+  },
+
+  {
+    id: 3,
+    category: { name: 'Chronic conditions', slug: 'chronic-conditions' },
+    name: 'Hypertension',
+    slug: 'hypertension',
+    shortSummary:
+      'Hypertension is high blood pressure. It usually gives no symptoms, so regular checks are the only way to know. Treatment lowers the risk of stroke and heart disease.',
+    description:
+      'Hypertension means the pressure of blood against the walls of the arteries stays higher than it should over time. It usually develops slowly and rarely causes symptoms, so many people have it without knowing. Because it does not announce itself, it is often called a silent condition. Untreated high blood pressure makes the heart work harder and raises the long-term risk of stroke, heart attack, kidney disease and problems with eyesight. Simple lifestyle changes and, when needed, medicine keep it under control.',
+    symptoms: [
+      'Usually no symptoms at all, which is why it is called a silent condition',
+      'Headache, especially in the morning, in some people',
+      'Blurred vision or seeing spots of light',
+      'Shortness of breath',
+      'Dizziness or feeling unsteady',
+      'Nosebleeds in some people',
+    ],
+    causes: [
+      'The arteries narrow and lose their natural elasticity as we age',
+      'Certain medical conditions, such as kidney disease, thyroid disease or diabetes',
+      'Some medicines, including certain painkillers and steroid medicines',
+    ],
+    riskFactors: [
+      'Being overweight',
+      'Eating a lot of salt',
+      'Not being physically active',
+      'Smoking',
+      'Drinking too much alcohol',
+      'Having a close family member with high blood pressure',
+    ],
+    prevention: [
+      'Cut back on salt and avoid processed foods that are high in it',
+      'Stay physically active for at least 30 minutes on most days',
+      'Keep a healthy weight',
+      'Limit alcohol and stop smoking',
+      'Eat a diet rich in fruit, vegetables and whole grains',
+      'Have your blood pressure checked regularly, even when you feel well',
+    ],
+    remedy: {
+      id: 2,
+      overview:
+        'High blood pressure is usually managed with lifestyle changes, and with medicine when those changes are not enough. A health professional decides whether medicine is needed and which one to use, based on your readings and your overall health. Treatment aims to bring blood pressure to a safe range and to lower the long-term risk of stroke and heart disease.',
+      careOptions: [
+        'Have your blood pressure checked regularly and keep a record of the readings',
+        'Take prescribed medicine every day, even on days when you feel fine',
+        'Reduce salt, eat more fruit and vegetables, and stay active',
+        'Keep a healthy weight and limit alcohol',
+        'Ask a health professional to review your medicines regularly',
+      ],
+      precautions: [
+        'Do not stop taking prescribed medicine because you feel well; high blood pressure rarely gives warnings',
+        'Do not take someone else’s blood pressure medicine or double a missed dose without advice',
+        'Be careful with over-the-counter painkillers and decongestants, which can raise blood pressure',
+        'Do not rely on home readings alone; have them checked properly at least once a year',
+      ],
+      urgentSigns: [
+        'A severe headache with sudden changes in vision needs emergency care right away',
+        'Chest pain, breathlessness, or weakness on one side of the body needs emergency care',
+        'A reading of 180 over 120 or higher should be repeated after a few minutes and reported to a health professional',
+      ],
+      source:
+        'World Health Organization blood pressure fact sheet; checked against NCDC guidance',
+      lastReviewed: '2026-07-18',
+    },
+    featured: true,
+    createdAt: '2026-03-21',
+    updatedAt: '2026-07-18',
+  },
+
+  {
+    id: 4,
+    category: { name: 'Chronic conditions', slug: 'chronic-conditions' },
+    name: 'Type 2 diabetes',
+    slug: 'type-2-diabetes',
+    shortSummary:
+      'Type 2 diabetes means the body does not use insulin well, so blood sugar stays too high. It is common, often has no early symptoms, and is managed with food, activity and medicine.',
+    description:
+      'Type 2 diabetes is a long-term condition in which the body does not respond properly to insulin, the hormone that helps sugar move from the blood into the body’s cells. As a result, blood sugar levels stay higher than they should. It usually develops gradually and often has no symptoms in the early years, so it is commonly found during a routine check. Over time, high blood sugar can harm the eyes, kidneys, nerves and feet. It can be improved substantially with healthy food, regular activity, weight management and, when needed, medicine.',
+    symptoms: [
+      'Needing to pass urine often, especially at night',
+      'Feeling very thirsty and drinking a lot',
+      'Feeling unusually tired or low on energy',
+      'Blurred vision',
+      'Slow-healing cuts and sores',
+      'Tingling or numbness in the hands and feet',
+      'Itchy infections that keep coming back, such as thrush',
+      'Fever or shivering alongside a wound infection or a foot ulcer',
+    ],
+    causes: [
+      'The body gradually becomes resistant to insulin',
+      'The pancreas makes less insulin than the body needs',
+      'Both together, which is the usual pattern',
+    ],
+    riskFactors: [
+      'Being overweight or carrying extra weight around the waist',
+      'Being physically inactive',
+      'Having a parent, brother or sister with type 2 diabetes',
+      'Having high blood pressure or high cholesterol',
+      'Being over 45 years old',
+      'Having had diabetes during a previous pregnancy',
+    ],
+    prevention: [
+      'Keep a healthy weight, and lose a little weight if you are overweight',
+      'Be physically active for at least 30 minutes on most days',
+      'Eat more vegetables, whole grains and beans, and less refined sugar and sugary drinks',
+      'Limit heavily processed and fried foods',
+      'Keep blood pressure and cholesterol under control',
+      'Have regular blood sugar checks if a close family member has diabetes',
+    ],
+    remedy: {
+      id: 3,
+      overview:
+        'Type 2 diabetes is managed mainly through food, activity and weight management, with medicine added when those steps are not enough. A health professional confirms the diagnosis and decides which treatment suits each person. Early and steady control lowers the risk of eye, kidney, nerve and foot problems, and most people with type 2 diabetes live full, active lives.',
+      careOptions: [
+        'Follow a balanced eating plan and keep portion sizes steady through the day',
+        'Build up to at least 150 minutes of moderate activity each week',
+        'Take prescribed medicine as directed and do not change the dose without advice',
+        'Check your blood sugar as you have been taught and record the readings',
+        'Have regular checks of your eyes, feet, kidneys and blood sugar',
+      ],
+      precautions: [
+        'Do not take prescribed medicine less often or skip doses, even when you feel well',
+        'Do not eat a carbohydrate-rich food without counting it if you have been taught to count carbohydrates',
+        'Check your feet every day and get any sore or blister looked at quickly',
+        'Never use over-the-counter herbal products for blood sugar without asking a health professional',
+      ],
+      urgentSigns: [
+        'Very high blood sugar with vomiting, deep breathing and a fruity smell on the breath needs emergency care right away',
+        'A wound on the foot that is black, spreading red or leaking pus needs same-day medical attention',
+        'A severe headache with sudden changes in vision needs emergency care',
+        'Sudden numbness or weakness on one side of the body needs emergency care',
+      ],
+      source:
+        'World Health Organization diabetes fact sheet; checked against NCDC guidance',
+      lastReviewed: '2025-06-10',
+    },
+    featured: false,
+    createdAt: '2025-03-09',
+    updatedAt: '2025-06-10',
+  },
+
+  {
+    id: 5,
+    category: { name: 'Respiratory conditions', slug: 'respiratory-conditions' },
+    name: 'Asthma',
+    slug: 'asthma',
+    shortSummary:
+      'Asthma is a long-term condition of the airways. Symptoms come and go, and with the right treatment most people can stay active and in control.',
+    description:
+      'Asthma is a condition in which the airways in the lungs become narrow and inflamed, sometimes with extra mucus. The airways are then more sensitive, and they react to things like dust, smoke, cold air, pollen or exercise. Symptoms tend to come and go in episodes, and between episodes the lungs can work normally. Asthma cannot be cured, but with the right medicines, an action plan and avoiding triggers, most people can control it well and stay active.',
+    symptoms: [
+      'Wheezing, a whistling sound when breathing',
+      'A tight chest and shortness of breath',
+      'Coughing, worse at night or early in the morning',
+      'Using a reliever inhaler more often than usual',
+    ],
+    causes: [
+      'The airways in the lungs become inflamed and narrow',
+      'The airways become overly sensitive to everyday triggers',
+      'Family history and exposure to smoke or pollution make it more likely',
+    ],
+    riskFactors: [
+      'Having a parent or sibling with asthma or an allergy condition',
+      'Having another allergic condition such as hay fever or eczema',
+      'Being exposed to smoke, fumes or damp in the home',
+      'Living in a city with heavy air pollution',
+      'Being a child or a young adult, when asthma is most common',
+    ],
+    prevention: [
+      'Avoid cigarette smoke and other smoke exposure',
+      'Know your triggers and reduce exposure to them where you can',
+      'Use preventer medicine every day as prescribed, even when you feel well',
+      'Follow a written asthma action plan and keep it up to date',
+      'Have regular reviews with a health professional and check your inhaler technique',
+    ],
+    remedy: {
+      id: 4,
+      overview:
+        'Asthma is controlled with medicines that reduce swelling in the airways and medicines that relax them quickly during an episode. Most people use two inhalers: a preventer used every day, and a reliever used when symptoms appear. A health professional should confirm the diagnosis and write a personal action plan, because the treatment each person needs depends on how often symptoms occur and how severe they are. With the right plan, most people with asthma stay well and stay active.',
+      careOptions: [
+        'Use your preventer inhaler every day, even on days you feel completely well',
+        'Carry your reliever inhaler with you and use it as your action plan describes',
+        'Check your technique with a health professional, because small mistakes reduce how well the medicine works',
+        'Follow a written asthma action plan and keep it somewhere easy to find',
+        'Have regular reviews so the plan can be adjusted if your symptoms change',
+      ],
+      precautions: [
+        'Do not stop using your preventer inhaler when you feel better; it works by preventing symptoms',
+        'Do not use someone else’s inhaler, even if it is for the same condition',
+        'Do not smoke, and avoid smoke and strong fumes around your airways',
+        'Do not rely on a reliever inhaler alone if you need it more often than your plan allows; that means the plan needs review',
+      ],
+      urgentSigns: [
+        'Breathlessness that makes speaking or eating difficult needs emergency care right away',
+        'A reliever inhaler that is not helping within the time your action plan allows needs emergency care',
+        'Blue lips or fingertips, confusion or drowsiness during an attack needs emergency care',
+        'A tight chest with pain, or a sudden worsening of breathlessness, needs emergency care',
+      ],
+      source:
+        'World Health Organization asthma fact sheet; checked against NCDC guidance',
+      lastReviewed: '2026-08-12',
+    },
+    featured: true,
+    createdAt: '2026-05-14',
+    updatedAt: '2026-08-12',
+  },
+]

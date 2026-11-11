@@ -1,0 +1,8 @@
+export { Home } from './Home'
+export { SearchResults } from './SearchResults'
+export { Disease } from './Disease'
+export { Remedy } from './Remedy'
+export { Categories } from './Categories'
+export { Category } from './Category'
+export { About } from './About'
+export { NotFound } from './NotFound'
